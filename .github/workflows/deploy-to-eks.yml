@@ -35,8 +35,14 @@ jobs:
         docker push 948425238459.dkr.ecr.us-east-1.amazonaws.com/simple-node-app:latest
 
     - name: Update kubeconfig
+    - name: Update kubeconfig
       run: |
-        aws eks update-kubeconfig --name ${{ secrets.EKS_CLUSTER_NAME }} --region ${{ secrets.AWS_REGION }}
+          aws eks update-kubeconfig --name my-eks-cluster --region us-east-1
+      env:
+         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+         AWS_REGION: us-east-1
+
 
     - name: Deploy to EKS
       run: |
