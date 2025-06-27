@@ -35,7 +35,6 @@ jobs:
         docker push 948425238459.dkr.ecr.us-east-1.amazonaws.com/simple-node-app:latest
 
     - name: Update kubeconfig
-    - name: Update kubeconfig
       run: |
           aws eks update-kubeconfig --name my-eks-cluster --region us-east-1
       env:
